@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://game.gtimg.cn/images/js/delottery/index.html#square -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    
+    <title>圆形与方形抽奖示例</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <style>
+    *{margin:0; padding:0;}
+    .lottery{position: relative; width: 934px; height:622px; margin-top: 20px;}
+    .lottery2{width:800px; height:360px; margin-top: 20px; position: relative}
+    .flash{position: relative;}
+    .notice{text-align: center; background-color: red; margin-bottom: 20; color:#fff; height:50px; line-height: 50px; font-size:16px; font-weight:normal;}
+    .desc{height:32px; line-height: 32px; color:#fff; text-align: center;}
+    .add{height:32px; line-height: 32px; color:#fff; text-align: center; background-color: #05f961;}
+    h2{color:#fff; margin:15px 0; margin-left: 20px;}
+    h3{margin: 10px 20px;}
+    h3,h4{color:#fff; margin-left: 20px;}
+    button{background-color: #f60; padding:20px 10px; margin-top: 10px; margin-left: 30px; cursor: pointer;}
+
+    table{background-color:#4B89BC; width: 100%; margin-top: 20px; border-collapse: collapse; max-width:600px; clear: both;}
+    table td,table th{padding:15px; border:1px solid #ccc;}
+    </style>
+</head>
+<body style="background-color:#333333;">
+<h1 class="notice">原生 JavaScript 抽奖组件，支持移动端适配，无框架依赖，抵制 FLASH ！</h1>
+<p class="desc">兼容：IE7/IE8/IE9/IE10/IE11/CHROME/FIREFOX/SAFARI 等浏览器</p>
+<p class="add">原FLASH版抽奖参数配置项可原封不动移植！</p>
+<h2><a href="http://pub.code.oa.com/project/home?comeFrom=103&amp;projectName=delottery" target="_blank">来支持组件~！</a></h2>
+<h2 id="rem">新增 REM 支持</h2>
+<h3>源码示例 <a href="http://x5m.qq.com/act/a20180119game/index.html" target="_blank">活动应用示例</a></h3>
+<link rel="stylesheet" type="text/css" href="./圆形与方形抽奖示例_files/shCoreMidnight.css"><div id="highlighter_249752" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="http://game.gtimg.cn/images/js/delottery/index.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">&lt;script&nbsp;src=</code><code class="js string">"<a href="https://ossweb-img.qq.com/images/js/delottery/lottery_v2.js">https://ossweb-img.qq.com/images/js/delottery/lottery_v2.js</a>"</code><code class="js plain">&gt;&lt;/script&gt;</code></div></div></td></tr></tbody></table></div>
+<link rel="stylesheet" type="text/css" href="./圆形与方形抽奖示例_files/shCoreMidnight.css"><div id="highlighter_713834" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="http://game.gtimg.cn/images/js/delottery/index.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js comments">//开始抽奖lottery-&gt;js</code></div><div class="line number2 index1 alt1"><code class="js keyword">var</code>&nbsp;<code class="js plain">msg=</code><code class="js string">"恭喜你获得大奖哟"</code><code class="js plain">;</code></div><div class="line number3 index2 alt2"><code class="js keyword">function</code>&nbsp;<code class="js plain">callJsToStart(){</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">PTTSendClick(</code><code class="js string">'lottery'</code><code class="js plain">,</code><code class="js string">'start'</code><code class="js plain">,</code><code class="js string">'抽奖_开始'</code><code class="js plain">);</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">amsSubmit(136209,434241);</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//alert("抽奖暂未开放哦！");</code></div><div class="line number7 index6 alt2"><code class="js plain">}</code></div><div class="line number8 index7 alt1"><code class="js comments">//开发获得抽奖结果&nbsp;通知lottery开始播放效果&nbsp;js-&gt;lottery</code></div><div class="line number9 index8 alt2"><code class="js keyword">function</code>&nbsp;<code class="js plain">calllotteryToRoll(id){</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">PTTSendClick(</code><code class="js string">'lottery'</code><code class="js plain">,</code><code class="js string">'reward_'</code><code class="js plain">+id,</code><code class="js string">'抽奖_奖品_'</code><code class="js plain">+id);</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">if</code><code class="js plain">(lottery)lottery.stopRoll(id);</code></div><div class="line number12 index11 alt1"><code class="js plain">}</code></div><div class="line number13 index12 alt2"><code class="js comments">//动画完成通知js&nbsp;&nbsp;lottery-&gt;js</code></div><div class="line number14 index13 alt1"><code class="js keyword">function</code>&nbsp;<code class="js plain">callJsToComplete(){</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">PTTSendClick(</code><code class="js string">'lottery'</code><code class="js plain">,</code><code class="js string">'end'</code><code class="js plain">,</code><code class="js string">'抽奖_完毕'</code><code class="js plain">);</code></div><div class="line number16 index15 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//alert(msg);</code></div><div class="line number17 index16 alt2"><code class="js plain">}</code></div><div class="line number18 index17 alt1">&nbsp;</div><div class="line number19 index18 alt2"><code class="js comments">//初始化抽奖的&nbsp;可以不知道内部</code></div><div class="line number20 index19 alt1"><code class="js keyword">var</code>&nbsp;<code class="js plain">lottery=&nbsp;</code><code class="js keyword">new</code>&nbsp;<code class="js plain">Lottery({</code></div><div class="line number21 index20 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'lighturl'</code><code class="js plain">:</code><code class="js string">'//game.gtimg.cn/images/x5m/act/a20180119game/p3_lottery_cur.png'</code><code class="js plain">,</code></div><div class="line number22 index21 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'total'</code><code class="js plain">:10,</code></div><div class="line number23 index22 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'width'</code><code class="js plain">:6.8,</code></div><div class="line number24 index23 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'height'</code><code class="js plain">:4.99,</code></div><div class="line number25 index24 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'sbtnx'</code><code class="js plain">:1.85,</code></div><div class="line number26 index25 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'sbtny'</code><code class="js plain">:1.79,</code></div><div class="line number27 index26 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'sbtnw'</code><code class="js plain">:3.09,</code></div><div class="line number28 index27 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'sbtnh'</code><code class="js plain">:1.04,</code></div><div class="line number29 index28 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'boxw'</code><code class="js plain">:1.51,</code></div><div class="line number30 index29 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'boxh'</code><code class="js plain">:1.4,</code></div><div class="line number31 index30 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'position'</code><code class="js plain">:</code><code class="js string">"0.2_0.22,1.81_0.22,3.45_0.22,5.08_0.22,0.2_1.76,5.08_1.76,0.2_3.33,1.81_3.33,3.45_3.33,5.08_3.33"</code><code class="js plain">,</code></div><div class="line number32 index31 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'contentId'</code>&nbsp;<code class="js plain">:&nbsp;</code><code class="js string">'lotterycontent'</code><code class="js plain">,</code></div><div class="line number33 index32 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'onClickRollEvent'</code>&nbsp;<code class="js plain">:&nbsp;callJsToStart,</code></div><div class="line number34 index33 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'onCompleteRollEvent'</code><code class="js plain">:callJsToComplete&nbsp;,</code></div><div class="line number35 index34 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'unit'</code><code class="js plain">:</code><code class="js string">"rem"</code><code class="js plain">,</code></div><div class="line number36 index35 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js string">'isResponsive'</code><code class="js plain">:0</code></div><div class="line number37 index36 alt2"><code class="js plain">});</code></div></div></td></tr></tbody></table></div>
+<h2 id="round">Demo1</h2>
+<div class="lottery" id="lotterycontent" style="">
+    <img src="./圆形与方形抽奖示例_files/bg.png" style="">
+<div id="swflotterycontent_container" class="lotterycontent_container"><a hidefocus="true" id="lotterycontent_start" href="javascript:;" class="lotterycontent_start"><div class="lotterycontent_slight"></div></a><div id="lotterycontent_hover" class="lotterycontent_hover"></div></div></div>
+<h3>源码示例</h3>
+<h4>先引入lottery.js</h4>
+<pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;script</span> <span style="color:#00c">src</span>=<span style="color:#a11">"//game.gtimg.cn/images/js/delottery/lottery.js"</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/script</span><span style="color:#170">&gt;</span><br></pre><h4>HTML</h4>
+<pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;div</span> <span style="color:#00c">class</span>=<span style="color:#a11">"lottery"</span> <span style="color:#00c">id</span>=<span style="color:#a11">"lotterycontent"</span> <span style="color:#00c">style</span>=<span style="color:#a11">""</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;img</span> <span style="color:#00c">src</span>=<span style="color:#a11">"bg.png"</span> <span style="color:#00c">style</span>=<span style="color:#a11">""</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/div</span><span style="color:#170">&gt;</span></pre>
+<h4>CSS</h4>
+<pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444">.<span style="color:#170">lottery</span>{<span style="color:#000">position</span>: <span style="color:#164">relative</span>; <span style="color:#000">width</span>: <span style="color:#164">934px</span>; <span style="color:#000">height</span>:<span style="color:#164">622px</span>; <span style="color:#000">margin-top</span>: <span style="color:#164">20px</span>; <span style="color:#000">margin-left</span>: <span style="color:#164">20px</span>;}</pre>
+<h4>JAVASCRIPT</h4>
+<pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#a50">//开始抽奖lottery-&gt;js</span><br> <span style="color:#708">function</span> <span style="color:#000">callJsToStart</span>(){<br>    <span style="color:#000">calllotteryToRoll</span>(<span style="color:#164">4</span>);<br>}<br><span style="color:#a50">//开发获得抽奖结果 通知lottery开始播放效果 js-&gt;lottery</span><br> <span style="color:#708">function</span> <span style="color:#000">calllotteryToRoll</span>(<span style="color:#00f">id</span>){<br>    <span style="color:#708">if</span>(<span style="color:#000">lottery</span>)<span style="color:#000">lottery</span>.<span style="color:#000">stopRoll</span>(<span style="color:#000-2">id</span>);<br>}<br><span style="color:#a50">//动画完成通知js  lottery-&gt;js</span><br> <span style="color:#708">function</span> <span style="color:#000">callJsToComplete</span>(){<br>    <span style="color:#000">alert</span>(<span style="color:#a11">'恭喜你获得大奖哟！！'</span>);<br>}<br> <br>    <span style="color:#a50">//初始化抽奖的 可以不知道内部</span><br> <span style="color:#708">var</span> <span style="color:#000">lottery</span>= <span style="color:#708">new</span> <span style="color:#000">Lottery</span>({<br>    <span style="color:#a11">'lighturl'</span>:<span style="color:#a11">'http://ossweb-img.qq.com/images/js/delottery/light.png'</span>,<br>    <span style="color:#a11">'starturl'</span>:<span style="color:#a11">'http://ossweb-img.qq.com/images/js/delottery/blankstartbtn.png'</span>,<br>    <span style="color:#a11">'total'</span>:<span style="color:#164">12</span>,<br>    <span style="color:#a11">'width'</span>:<span style="color:#164">935</span>,<br>    <span style="color:#a11">'height'</span>:<span style="color:#164">623</span>,<br>    <span style="color:#a11">'sbtnx'</span>:<span style="color:#164">179</span>,<br>    <span style="color:#a11">'sbtny'</span>:<span style="color:#164">398</span>,<br>    <span style="color:#a11">'sbtnw'</span>:<span style="color:#164">205</span>,<br>    <span style="color:#a11">'sbtnh'</span>:<span style="color:#164">54</span>,<br>    <span style="color:#a11">'boxw'</span>:<span style="color:#164">154</span>,<br>    <span style="color:#a11">'boxh'</span>:<span style="color:#164">156</span>,<br>    <span style="color:#a11">'position'</span>:<span style="color:#a11">"157_0,313_0,469_0,625_0,781_156,781_312,626_467,470_467,314_467,158_467,1_312,1_156"</span>,<br>    <span style="color:#a11">'contentId'</span> : <span style="color:#a11">'lotterycontent'</span>,<br>    <span style="color:#a11">'onClickRollEvent'</span> : <span style="color:#000">callJsToStart</span>,<br>    <span style="color:#a11">'onCompleteRollEvent'</span>:<span style="color:#000">callJsToComplete</span> <br>});</pre>
+
+<h2>Demo2</h2>
+<div class="lottery2" id="lotterycontent2" style="">
+    <img src="./圆形与方形抽奖示例_files/lotterybg.jpg">
+<div id="swflotterycontent2_container" class="lotterycontent2_container"><a hidefocus="true" id="lotterycontent2_start" href="javascript:;" class="lotterycontent2_start"><div class="lotterycontent2_slight"></div></a><div id="lotterycontent2_hover" class="lotterycontent2_hover" style="display: block; left: 459px; top: 19px;"></div></div></div>
+<button onclick="callJsToStart2();" style="color:#ffffff">页面控制开始抽奖</button>
+
+
+<h2 id="square">Demo3 圆盘抽奖</h2>
+<h3>源码示例</h3>
+<h4>先引入lottery.js</h4>
+<h4>html</h4>
+<pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;div</span> <span style="color:#00c">class</span>=<span style="color:#a11">"lottery"</span> <span style="color:#00c">id</span>=<span style="color:#a11">"lotterycontent"</span> <span style="color:#00c">style</span>=<span style="color:#a11">""</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;img</span> <span style="color:#00c">src</span>=<span style="color:#a11">"http://ossweb-img.qq.com/images/js/delottery/bg.png"</span> <span style="color:#00c">style</span>=<span style="color:#a11">""</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/div</span><span style="color:#170">&gt;</span></pre>
+<h4>javascript</h4>
+<pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444">//点击开始抽奖 通知js  flash-&gt;js<br>function callJsToStarto(){<br>    //alert(11);<br>//测试<br>    callFlashToRollo(2);<br>}<br>//开发获得抽奖结果 通知flash开始播放效果 js-&gt;flash<br>function callFlashToRollo(id){<br>    //alert(22)<br>    //通知转盘转到对应的中奖产品的id （序号从0,1,2.....，0是指针初始指示的位置，沿着顺时针的方向递增）<br>    if(SWFOBJo)SWFOBJo.stopRoll(id);<br>}<br>//3、flash动画完成通知js  flash-&gt;js<br>function callJsToCompleteo(){<br>    SWFOBJo.enable()<br>    alert('恭喜你获得大奖XXXX哟！！');<br>}<br>    //初始化抽奖对象的SWFOBJ <br>    //转盘的中心点坐标为（0,0））<br>var SWFOBJo= new Lottery({<br>        'r':8,//奖品总数<br>        'width':488,//flash宽度<br>        'height':488,//flash高度<br>                's':'http://ossweb-img.qq.com/images/flash/lottery/circle/z.png',//开始抽奖按钮图片<br>        'bx':0,//圆盘的图片位置x坐标 （转盘的中心点坐标为（0,0））<br>        'by':0,//圆盘的图片位置y坐标<br>        'sx':0,//开始抽奖按钮x坐标<br>        'sy':0,//开始抽奖按钮y坐标<br>        'contentId' : 'swfcontent',//嵌入swf 的div层的 id <br>        'onClickRollEvent' : callJsToStarto,//对应上面接口<br>        'onCompleteRollEvent':callJsToCompleteo //对应上面接口<br>});</pre>
+
+<div class="flash" style="height:500px; width:488px;">
+    <div id="swfcontent">
+        <img src="./圆形与方形抽奖示例_files/g.png" alt="">
+    <div id="swfswfcontent_container" class="swfcontent_container"><div id="swfcontent_hover" class="swfcontent_hover"></div><img src="./圆形与方形抽奖示例_files/z.png" id="swfcontent_start" class="swfcontent_start" style="margin-left: -74px; margin-top: -74px;"></div></div>
+</div>
+
+<h2>参数解析</h2>
+<p style="height: 32px; line-height: 32px; color: #fff;">重置抽奖：使用reset方法，lottery.reset();  或者使用lottery.enable(),解锁抽奖按钮但不清空上次抽奖位置。</p>
+<table class="params"><thead><tr><th>名称</th><th>类型</th><th>参数</th><th class="last">描述</th></tr></thead><tbody><tr><td class="name"><code>opts</code></td><td class="type"><span class="param-type">object</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="description last">配置参数<h6>Properties</h6><table class="params"><thead><tr><th>名称</th><th>类型</th><th>参数</th><th>默认值</th><th class="last">描述</th></tr></thead><tbody><tr><td class="name"><code>lighturl</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">''</td><td class="description last">外部光圈png不填写就用默认的效果</td></tr><tr><td class="name"><code>starturl</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">''</td><td class="description last">外部按钮png不填写就用默认的按钮效果</td></tr><tr><td class="name"><code>width</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">800</td><td class="description last">宽度</td></tr><tr><td class="name"><code>height</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">660</td><td class="description last">高度</td></tr><tr><td class="name"><code>total</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">18</td><td class="description last">抽奖产品的总数</td></tr><tr><td class="name"><code>sbtnx</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">239</td><td class="description last">开始抽奖按钮的位置x坐标</td></tr><tr><td class="name"><code>sbtny</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">130</td><td class="description last">开始抽奖按钮的位置y坐标</td></tr><tr><td class="name"><code>sbtnw</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">320</td><td class="description last">开始抽奖按钮的宽度</td></tr><tr><td class="name"><code>sbtnh</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">100</td><td class="description last">开始抽奖按钮的高度</td></tr><tr><td class="name"><code>boxw</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">100</td><td class="description last">奖品光效的宽度</td></tr><tr><td class="name"><code>boxh</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">100</td><td class="description last">奖品光效的高度</td></tr><tr><td class="name"><code>position</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">"19_20, 128_20, 348_19, 569_239, 679_239"</td><td class="description last">奖品光效的位置，对应奖品图片的布局，填入每个奖品的位置以及角度用逗号分割x_y_rotation（角度为0的可以不填写）例如19_20或者19_20_0表示第一个奖品的位置x坐标为19px y坐标为20px角度为0。）</td></tr><tr><td class="name"><code>contentId</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">swfcontent</td><td class="description last">嵌入抽奖模块的div层的id</td></tr><tr><td class="name"><code>onClickRollEvent</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default"></td><td class="description last"></td></tr><tr><td class="name"><code>onCompleteRollEvent</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default"></td><td class="description last">奖品光效的高度</td></tr><tr><td class="name"><code>b</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">null</td><td class="description last">圆盘的图片</td></tr><tr><td class="name"><code>s</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">null</td><td class="description last">开始抽奖按钮图片</td></tr><tr><td class="name"><code>bx</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">null</td><td class="description last">圆盘的图片位置x坐标（转盘的中心点坐标为（0,0））</td></tr><tr><td class="name"><code>by</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">null</td><td class="description last">圆盘的图片位置y坐标</td></tr><tr><td class="name"><code>sx</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">null</td><td class="description last">开始抽奖按钮x坐标</td></tr><tr><td class="name"><code>sy</code></td><td class="type"><span class="param-type">string</span></td><td class="attributes">&lt;optional&gt;<br></td><td class="default">null</td><td class="description last">开始抽奖按钮y坐标</td></tr></tbody></table></td></tr></tbody></table>
+
+
+
+<!-- <script src="http://ossweb-img.qq.com/images/js/zepto/zepto.min.js"></script>
+ -->
+
+
+
+<script src="./圆形与方形抽奖示例_files/lottery.js.下载"></script>
+<script>
+function callJsToStart(){
+    calllotteryToRoll(4);
+}
+function calllotteryToRoll(id){
+    if(lottery)lottery.stopRoll(id);
+}
+function callJsToComplete(){
+    alert('恭喜你获得大奖哟！！');
+}
+ 
+//初始化抽奖的 可以不知道内部
+ var lottery= new Lottery({
+    'lighturl':'http://ossweb-img.qq.com/images/js/delottery/light.png',
+    'starturl':'http://ossweb-img.qq.com/images/js/delottery/blankstartbtn.png',
+    'total':12,
+    'width':935,
+    'height':623,
+    'sbtnx':179,
+    'sbtny':398,
+    'sbtnw':205,
+    'sbtnh':54,
+    'boxw':154,
+    'boxh':156,
+    'position':"157_0,313_0,469_0,625_0,781_156_90,781_312_90,626_467_180,470_467_180,314_467_180,158_467_180,1_312_270,1_156_270",
+    'contentId' : 'lotterycontent',
+    'onClickRollEvent' : callJsToStart,
+    'onCompleteRollEvent':callJsToComplete 
+});
+
+
+
+
+
+
+//开始抽奖lottery->js
+function callJsToStart2(){
+    lottery2.disable();
+    calllotteryToRoll2(4);
+}
+//开发获得抽奖结果 通知lottery开始播放效果 js->lottery
+function calllotteryToRoll2(id){
+    if(lottery2)lottery2.stopRoll(id);
+}
+//动画完成通知js  lottery->js
+function callJsToComplete2(){
+    alert('恭喜你获得大奖哟！！');
+}
+
+ 
+//初始化抽奖的 可以不知道内部
+ var lottery2= new  Lottery({
+   'lighturl':'http://ossweb-img.qq.com/images/js/delottery/sel.png',//外部光圈png  不填写就用默认的效果
+　　'width':800,//lottery 宽度
+    'height':360,//lottery 高度
+　　'total':18,//抽奖产品的总数
+　　'sbtnx':239,// 开始抽奖按钮的位置x坐标
+    'sbtny':130 ,// 开始抽奖按钮的位置y坐标
+    'sbtnw':320,// 开始抽奖按钮的宽度
+    'sbtnh':100,// 开始抽奖按钮的高度
+    'boxw':100,// 奖品光效的宽度
+    'boxh':100,//奖品光效的高度  
+    'position':"19_20,128_20,238_20,348_19,459_19,568_19,679_19,19_129,128.8_129,568_129,678_129,19_240,128_240,238_240,349_240,459_239,569_239,679_239",
+    //奖品光效的位置，对应奖品图片的布局，填入每个奖品的位置以及角度用逗号分割  x_y 例如19_20或者19_20_0 表示第一个奖品的位置 x坐标为19px y坐标为20px 角度为0。）
+    'contentId' : 'lotterycontent2',//嵌入lottery 的div层的 id 
+    'onClickRollEvent' : callJsToStart2,//对应上面接口
+    'onCompleteRollEvent':callJsToComplete2 //对应上面接口
+});
+
+
+
+
+//点击开始抽奖 通知js  flash->js
+function callJsToStarto(){
+    //alert(11);
+//测试
+    callFlashToRollo(2);
+}
+//开发获得抽奖结果 通知flash开始播放效果 js->flash
+function callFlashToRollo(id){
+    //alert(22)
+    //通知转盘转到对应的中奖产品的id （序号从0,1,2.....，0是指针初始指示的位置，沿着顺时针的方向递增）
+    if(SWFOBJo)SWFOBJo.stopRoll(id);
+}
+//3、flash动画完成通知js  flash->js
+function callJsToCompleteo(){
+    SWFOBJo.enable()
+    alert('恭喜你获得大奖XXXX哟！！');
+}
+    //初始化抽奖对象的SWFOBJ 
+    //转盘的中心点坐标为（0,0））
+var SWFOBJo= new Lottery({
+        'r':8,//奖品总数
+        'width':488,//flash宽度
+        'height':488,//flash高度
+        's':'http://ossweb-img.qq.com/images/flash/lottery/circle/z.png',//开始抽奖按钮图片
+        'bx':0,//圆盘的图片位置x坐标 （转盘的中心点坐标为（0,0））
+        'by':0,//圆盘的图片位置y坐标
+        'sx':0,//开始抽奖按钮x坐标
+        'sy':0,//开始抽奖按钮y坐标
+        'contentId' : 'swfcontent',//嵌入swf 的div层的 id 
+        'onClickRollEvent' : callJsToStarto,//对应上面接口
+        'onCompleteRollEvent':callJsToCompleteo //对应上面接口
+});
+
+
+
+
+
+</script>
+
+
+ <script>
+    function isMobile(){
+         return /iphone|ios|android|mini|mobile|mobi|Nokia|Symbian|iPod|iPad|Windows\s+Phone|MQQBrowser|wp7|wp8|UCBrowser7|UCWEB|360\s+Aphone\s+Browser|blackberry/i.test(navigator.userAgent);
+    }
+    if(isMobile()){
+        document.getElementById("lotterycontent").style = "width:auto; height:auto;";
+        document.getElementById("lotterycontent").getElementsByTagName("img")[0].style = "width:100%;";
+
+        document.getElementById("lotterycontent2").style = "width:auto; height:auto;";
+        document.getElementById("lotterycontent2").getElementsByTagName("img")[0].style = "width:100%;"
+    }
+</script>
+
+
+</body></html>
