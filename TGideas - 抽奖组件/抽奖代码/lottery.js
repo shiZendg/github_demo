@@ -9,10 +9,10 @@ function Lottery(option){
 
     var _private = {
         /**
-         * ������ʽ����
-         * @param {string} selector ѡ����
-         * @param {string} styleObj ��ʽ
-         * @param {number} pos      �����λ��
+         * 添加样式规则
+         * @param {string} selector 选择器
+         * @param {string} styleObj 样式
+         * @param {number} pos      插入的位置
          */
         addRule : function(selector, styleObj, pos){
 
@@ -46,7 +46,7 @@ function Lottery(option){
 
 
             if('insertRule' in sheet){
-                //alert("�ִ������");
+                //alert("现代浏览器");
                 //////console.log(pos)
                 sheet.insertRule(selector + '{' + text + '}', pos)
             }else{
@@ -58,11 +58,11 @@ function Lottery(option){
             }
         },
         myBrowser:function(){
-            var userAgent = window.navigator.userAgent; //ȡ���������userAgent�ַ���
-            var isOpera = userAgent.indexOf("Opera") > -1; //�ж��Ƿ�Opera�����
-            var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //�ж��Ƿ�IE�����
-            var isFF = userAgent.indexOf("Firefox") > -1; //�ж��Ƿ�Firefox�����
-            var isSafari = userAgent.indexOf("Safari") > -1; //�ж��Ƿ�Safari�����
+            var userAgent = window.navigator.userAgent; //取得浏览器的userAgent字符串
+            var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器
+            var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
+            var isFF = userAgent.indexOf("Firefox") > -1; //判断是否Firefox浏览器
+            var isSafari = userAgent.indexOf("Safari") > -1; //判断是否Safari浏览器
             if(userAgent.indexOf("Edge") > -1){
                     return "edge";
             }
@@ -122,8 +122,8 @@ function Lottery(option){
             }
         },
         /**
-         * �����ʽǰ׺
-         * @return {Object} css��js��ǰ׺
+         * 检测样式前缀
+         * @return {Object} css和js的前缀
          */
         detectCSSPrefix : function(){
             var getStyle = window.getComputedStyle;
@@ -167,16 +167,16 @@ function Lottery(option){
             return obj;
         },
         /**
-         * ��ָ����Χ�л�ȡһ�������
-         * @param  {number} min ��Сֵ
-         * @param  {number} max ���ֵ
-         * @return {number}     ��ȡ�������ֵ
+         * 在指定范围中获取一个随机数
+         * @param  {number} min 最小值
+         * @param  {number} max 最大值
+         * @return {number}     获取到的随机值
          */
         random : function(min,max){
             return Math.floor(min+Math.random()*(max-min));
         },
         /**
-         * ��ȡkeyframe����
+         * 提取keyframe规则
          * @param  {string} rule [description]
          * @return {string}      [description]
          */
@@ -215,36 +215,36 @@ function Lottery(option){
 
 
     var _static = this.constructor;
-        // ���Ĭ������
+        // 插件默认配置
         _static.config = {
-            'lighturl':'//ossweb-img.qq.com/images/js/delottery/sel.png',//�ⲿ��Ȧpng  ����д����Ĭ�ϵ�Ч��
-              'starturl':"about:blank",//�ⲿ��ťpng  ����д����Ĭ�ϵİ�ťЧ��
-            'width':800,//flash ����
-            'height':660,//flash �߶�
-            'total':18,//�齱��Ʒ������
-            'sbtnx':239,// ��ʼ�齱��ť��λ��x����
-            'sbtny':130 ,// ��ʼ�齱��ť��λ��y����
-            'sbtnw':320,// ��ʼ�齱��ť�Ŀ���
-            'sbtnh':100,// ��ʼ�齱��ť�ĸ߶�
-            'boxw':100,// ��Ʒ��Ч�Ŀ���
-            'boxh':100,//��Ʒ��Ч�ĸ߶�
+            'lighturl':'//ossweb-img.qq.com/images/js/delottery/sel.png',//外部光圈png  不填写就用默认的效果
+              'starturl':"about:blank",//外部按钮png  不填写就用默认的按钮效果
+            'width':800,//flash 宽度
+            'height':660,//flash 高度
+            'total':18,//抽奖产品的总数
+            'sbtnx':239,// 开始抽奖按钮的位置x坐标
+            'sbtny':130 ,// 开始抽奖按钮的位置y坐标
+            'sbtnw':320,// 开始抽奖按钮的宽度
+            'sbtnh':100,// 开始抽奖按钮的高度
+            'boxw':100,// 奖品光效的宽度
+            'boxh':100,//奖品光效的高度
             'position':"19_20,128_20,238_20,348_19,459_19,568_19,679_19,19_129,128.8_129,568_129,678_129,19_240,128_240,238_240,349_240,459_239,569_239,679_239",
-            //��Ʒ��Ч��λ�ã���Ӧ��ƷͼƬ�Ĳ��֣�����ÿ����Ʒ��λ���Լ��Ƕ��ö��ŷָ�  x_y_rotation���Ƕ�Ϊ0�Ŀ��Բ���д�� ����19_20����19_20_0 ��ʾ��һ����Ʒ��λ�� x����Ϊ19px y����Ϊ20px �Ƕ�Ϊ0����
-            'contentId' : 'swfcontent',//Ƕ��swf ��div��� id
-            'onClickRollEvent' : function(){},//��Ӧ����ӿ�
-            'onCompleteRollEvent':function(){}, //��Ӧ����ӿ�
-            //================���µĲ�������Ϊת�����==============================
-            'r' : null,//��Ʒ����
-            'b':'//ossweb-img.qq.com/images/flash/lottery/circle/g.png',//Բ�̵�ͼƬ �ļ���ʽ������swf��png��jpg������swf ����ѹ����
-            's':'//ossweb-img.qq.com/images/flash/lottery/circle/z.png',//��ʼ�齱��ťͼƬ
-            'bx':0,//Բ�̵�ͼƬλ��x���� ��ת�̵����ĵ�����Ϊ��0,0����
-            'by':0,//Բ�̵�ͼƬλ��y����
-            'sx':0,//��ʼ�齱��ťx����
-            'sy':0//��ʼ�齱��ťy����
+            //奖品光效的位置，对应奖品图片的布局，填入每个奖品的位置以及角度用逗号分割  x_y_rotation（角度为0的可以不填写） 例如19_20或者19_20_0 表示第一个奖品的位置 x坐标为19px y坐标为20px 角度为0。）
+            'contentId' : 'swfcontent',//嵌入swf 的div层的 id
+            'onClickRollEvent' : function(){},//对应上面接口
+            'onCompleteRollEvent':function(){}, //对应上面接口
+            //================以下的参数配置为转盘类的==============================
+            'r' : null,//奖品总数
+            'b':'//ossweb-img.qq.com/images/flash/lottery/circle/g.png',//圆盘的图片 文件格式可以是swf、png、jpg（建议swf 可以压缩）
+            's':'//ossweb-img.qq.com/images/flash/lottery/circle/z.png',//开始抽奖按钮图片
+            'bx':0,//圆盘的图片位置x坐标 （转盘的中心点坐标为（0,0））
+            'by':0,//圆盘的图片位置y坐标
+            'sx':0,//开始抽奖按钮x坐标
+            'sy':0//开始抽奖按钮y坐标
         };
 
         /**
-         * cssǰ׺
+         * css前缀
          * @type {[type]}
          */
         _private.prefix = _private.detectCSSPrefix().css;
@@ -254,7 +254,7 @@ function Lottery(option){
             var _self = this;
 
 
-            function cloneObj(oldObj) { //���ƶ��󷽷�
+            function cloneObj(oldObj) { //复制对象方法
                 if (typeof(oldObj) != 'object') return oldObj;
                 if (oldObj == null) return oldObj;
                 var newObj = new Object();
@@ -262,11 +262,11 @@ function Lottery(option){
                 newObj[i] = cloneObj(oldObj[i]);
                 return newObj;
             };
-            function extendObj() { //��չ����
+            function extendObj() { //扩展对象
                 var args = arguments;
                // ////////console.log(args);
                 if (args.length < 2) return;
-                var temp = cloneObj(args[0]); //���ø��ƶ��󷽷�
+                var temp = cloneObj(args[0]); //调用复制对象方法
                 for (var n = 1; n < args.length; n++) {
                     for (var i in args[n]) {
                     temp[i] = args[n][i];
@@ -303,10 +303,10 @@ function Lottery(option){
             var startBtn = null, moveBox = null, container = document.getElementById(config['contentId']);
             // container.style = "position:relative; left:0; top:0; z-index:2;"
 
-            //��ʼ��class*/
+            //初始化class*/
             var classInit = (function(){
 
-                //�齱������class��ʼ��
+                //抽奖容器的class初始化
                 _private.addRule('.' + classes['container'],{
                     position : 'absolute',
                     left:0,
@@ -314,7 +314,7 @@ function Lottery(option){
                     width : config.width + 'px',
                     height : config.height + 'px'
                 })
-                if(config.r){ //��ת����
+                if(config.r){ //大转盘类
                     var startBtn = {
                         display : 'block',
                         position:'absolute',
@@ -324,7 +324,7 @@ function Lottery(option){
                     }
                     startBtn[_private.prefix + 'transition'] = 'transform .2s ease-in';
                     _private.addRule('.' + classes['start'], startBtn);
-                    //���ɵ��״̬�ĳ齱��ťclass��ʼ��
+                    //不可点击状态的抽奖按钮class初始化
                     var disableBtn = extendObj(startBtn,{cursor:'normal'});
 
 
@@ -360,7 +360,7 @@ function Lottery(option){
                         _private.addRule('@' + _private.prefix + 'keyframes '+ classes['borderLight'] , '0% {box-shadow:0px 0px 10px 10px rgba(255,255,255,.3) inset}100% {box-shadow:0px 0px 20px 20px rgba(255,255,255,.6) inset}');
                     }      
                 
-                    //�齱��ť��class��ʼ��
+                    //抽奖按钮的class初始化
                     var startBtn = {
                         position : 'absolute',
                         width : config.sbtnw + 'px',
@@ -370,7 +370,7 @@ function Lottery(option){
                         display : 'block',
                         outline : 'none'
                     }
-                    //����״̬�µĳ齱��ť
+                    //正常状态下的抽奖按钮
                     var start = extendObj(startBtn,{cursor : 'pointer',background : 'url('+ config.starturl +') no-repeat'});
 
 
@@ -379,7 +379,7 @@ function Lottery(option){
                     start[_private.prefix + 'animation'] = classes['borderLight'] + ' 1s infinite alternate';
                     _private.addRule('.' + classes['start'], start)
 
-                    //���ɵ��״̬�ĳ齱��ťclass��ʼ��
+                    //不可点击状态的抽奖按钮class初始化
                     var disableBtn = extendObj(startBtn,{cursor:'normal',background:'rgba(0,0,0,.5)'});
 
                     _private.addRule('.' + classes['disable'], disableBtn)
@@ -387,7 +387,7 @@ function Lottery(option){
                         display : 'none'
                     })
 
-                    //��ӰЧ�����ӵ�class��ʼ��
+                    //光影效果添加的class初始化
                     var slight = {
                         width : '100%',
                         height : '100%'
@@ -405,11 +405,11 @@ function Lottery(option){
                         display : 'none'
                     }
                     config.lighturl ? (moveLight['background'] = "url("+config.lighturl+") no-repeat"):(moveLight['box-shadow'] = '0px 0px 10px 10px rgba(255,255,255,.8) inset');
-                    //�ƶ��Ĺ�ӰЧ��
+                    //移动的光影效果
                     _private.addRule('.' + classes['hover'], moveLight);
                 }
             })();
-            //�����ʼ��
+            //界面初始化
             var faceInit = (function(){
                 var str
                 if(config.r){
@@ -429,7 +429,7 @@ function Lottery(option){
                     container.innerHTML = container.innerHTML+str;
                 }                startBtn = document.getElementById(classes['start']);
                 moveBox = document.getElementById(classes['hover']);
-                if(config.r){//��������λ��
+                if(config.r){//调整坐标位置
                     startBtn.onload = function(){
                         startBtn.style.cssText = 'margin-left:' + -(startBtn.width / 2 + config.sx) + 'px; margin-top:' + -(startBtn.height / 2 + config.sy) + 'px';
                         startBtn.onload = null;
@@ -466,7 +466,7 @@ function Lottery(option){
                 //     'MozAnimationEnd',
                 //     'oAnimationEnd'
                 // ];
-                // //�¼�����
+                // //事件检测绑定
                 // var animationend = function(elem, callback) {
                 //     var handler = function(e) {
                 //         if (animationendNames) {
@@ -484,7 +484,7 @@ function Lottery(option){
                 //     }
                 // };
             })();
-            //��������
+            //处理步骤
             var step = [];
             var parseStep = (function(){
                 if(config.r){
@@ -509,7 +509,7 @@ function Lottery(option){
                 }
             })();
             var curIndex = 0;
-            //�˶�����һ����Ʒ
+            //运动到下一个奖品
             var moveNext = function(){
                 if(++curIndex >= config.total){
                     curIndex = 0;
@@ -534,7 +534,7 @@ function Lottery(option){
                 if(myBrowser!="IE6"&&myBrowser!="IE7"&&myBrowser!="IE8"&&myBrowser!="IE8"&&myBrowser!="edge"){
                     var animateEndBool = false;
                     moveBox.style.cssText="-ms-transform: rotate("+ ((360-step[id]) + 360 * 10)+"deg); transform: rotateZ("+ ((360-step[id]) + 360 * 10)+"deg); transition:transform 5s cubic-bezier(0.35, -0.005, 0.565, 1.005) 0s;-ms-transition:transform 5s cubic-bezier(0.35, -0.005, 0.565, 1.005) 0s;";
-                    // ��������ʱ�¼�
+                    // 动画结束时事件
                     moveBox.addEventListener("transitionend", function() {
                         if(!animateEndBool) {
                             config.onCompleteRollEvent();
@@ -556,7 +556,7 @@ function Lottery(option){
                 }else{
                     var ani = function(t, b, c, d){return c * t / d + b;}
                     var dis = id - curIndex;
-                    var stepCounts = dis + config.total * _private.random(3,7) -1;   //3��6Ȧ֮�����ת
+                    var stepCounts = dis + config.total * _private.random(3,7) -1;   //3到6圈之间随机转
                     var speedUp, uniform , slowDown;
                     uniform = config.total * 2;
                     speedUp = Math.floor((stepCounts - uniform)/3);
@@ -575,13 +575,13 @@ function Lottery(option){
                         }
                         var moveTime, t = index, b = slowTime, c = fastTime - slowTime , d = speedUp;
 
-                        if(index <= speedUp){//����
+                        if(index <= speedUp){//加速
                             moveTime = ani(t,b,c,d);
                         }
-                        if(index > speedUp){ //����
+                        if(index > speedUp){ //匀速
                             moveTime = fastTime;
                         }
-                        if(index > uniform){//����
+                        if(index > uniform){//减速
                             t = slowT++
                             b = fastTime;
                             c = slowTime - fastTime;
